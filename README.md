@@ -1,3 +1,4 @@
 - react-router-v6.23.1
 - tailwind
 - daisyUI
+- react-responsive-carousel
