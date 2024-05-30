@@ -2,3 +2,5 @@
 - tailwind
 - daisyUI
 - react-responsive-carousel
+- swiper
+- react-rating
