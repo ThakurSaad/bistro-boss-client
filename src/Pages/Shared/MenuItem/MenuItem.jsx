@@ -1,5 +1,6 @@
 const MenuItem = ({ item }) => {
   const { name, recipe, image, price } = item;
+  
   return (
     <div className="flex items-center md:max-w-[648px]">
       <img

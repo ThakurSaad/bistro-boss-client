@@ -4,3 +4,6 @@
 - react-responsive-carousel
 - swiper
 - react-rating
+- react-helmet-async
+- react-parallax
+- react-tabs
