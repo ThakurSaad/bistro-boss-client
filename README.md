@@ -7,3 +7,7 @@
 - react-helmet-async
 - react-parallax
 - react-tabs
+- react-simple-captcha
+- firebase
+- react-hook-form
+- sweetalert2
