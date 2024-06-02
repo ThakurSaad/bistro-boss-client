@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -28,15 +31,28 @@ const NavBar = () => {
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
+      <Link to="/dashboard/cart">
+        <button className="btn text-xl">
+          <FaShoppingCart></FaShoppingCart>
+          <div className="badge badge-secondary">+{cart.length}</div>
+        </button>
+      </Link>
       {user ? (
-        <li>
-          <button
-            onClick={handleLogOut}
-            className="btn btn-ghost text-xl font-semibold uppercase"
-          >
-            Logout
-          </button>
-        </li>
+        <>
+          <li>
+            <Link to="/" className="md:text-xl font-semibold uppercase">
+              {user.displayName}
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-ghost text-xl font-semibold uppercase"
+            >
+              Logout
+            </button>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>
@@ -67,7 +83,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="text-xl font-semibold uppercase menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="text-black font-semibold uppercase menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navOptions}
           </ul>
@@ -75,7 +91,7 @@ const NavBar = () => {
         <a className="btn btn-ghost text-xl">Bistro Boss</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="text-2xl font-semibold uppercase menu menu-horizontal px-1">
+        <ul className="text-xl font-semibold uppercase menu menu-horizontal px-1">
           {navOptions}
         </ul>
       </div>

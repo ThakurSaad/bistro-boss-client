@@ -11,3 +11,6 @@
 - firebase
 - react-hook-form
 - sweetalert2
+- react-icons
+- axios
+- @tanstack/react-query
