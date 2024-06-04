@@ -1,12 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin";
 
 const SignUp = () => {
   //   const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -23,12 +27,22 @@ const SignUp = () => {
     createUser(data.email, data.password).then(() => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Name and Photo updated",
-            showConfirmButton: false,
-            timer: 1500,
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log(res.data);
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Thank you for joining us",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
         })
         .catch((err) => console.log(err));
@@ -165,6 +179,9 @@ const SignUp = () => {
                   <span className="font-semibold">Go to login</span>
                 </Link>
               </p>
+            </div>
+            <div className="text-center mb-4">
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
