@@ -18,9 +18,6 @@ const Dashboard = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin()
 
-  // const isAdmin = false;
-  console.log(isAdmin);
-
   return (
     <div className="flex">
       <div className="w-60 min-h-screen bg-orange-400">
