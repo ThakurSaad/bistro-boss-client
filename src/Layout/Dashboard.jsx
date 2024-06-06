@@ -16,7 +16,7 @@ import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  const [isAdmin] = useAdmin()
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">
@@ -83,9 +83,9 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/myBookings">
+                <NavLink to="/dashboard/paymentHistory">
                   <FaCalendarDay className="text-xl"></FaCalendarDay>
-                  My Bookings
+                  Payment History
                 </NavLink>
               </li>
             </>

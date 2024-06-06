@@ -3,12 +3,14 @@ import SectionTitle from "../../../Components/SectionTitle";
 import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
+  
   const totalPrice = cart.reduce(
-    (total, item) => total + parseInt(item.price),
+    (total, item) => total + parseFloat(item.price),
     0
   );
 
@@ -50,7 +52,9 @@ const Cart = () => {
         <h5 className="text-3xl uppercase font-semibold">
           Total price: ${totalPrice}
         </h5>
-        <button className="btn btn-primary">Pay</button>
+        <Link to={"/dashboard/payment"}>
+          <button disabled={!cart.length} className="btn btn-primary">Pay</button>
+        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
