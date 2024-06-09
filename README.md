@@ -15,3 +15,4 @@
 - axios
 - @tanstack/react-query
 - @stripe/react-stripe-js @stripe/stripe-js
+- recharts
